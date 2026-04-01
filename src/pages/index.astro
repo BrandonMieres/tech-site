@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+import SplashLoader from '../components/SplashLoader';
+import Cursor from '../components/Cursor';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import ProductSection from '../components/ProductSection';
+import ProductGrid from '../components/ProductGrid';
+import Navigation from '../components/Navigation';
+import FilmGrain from '../components/FilmGrain';
+import SectionTransition from '../components/SectionTransition';
+import ExplodedView from '../components/ExplodedView';
+
+const products = [
+  { id: 'cascos', title: 'Quantum Headset', videoSrc: '/videos/Cascos.mp4', desc: 'Immersive 3D audio experience with next-gen noise cancellation.' },
+  { id: 'keyboard', title: 'Apex Keyboard', videoSrc: '/videos/Keyboard.mp4', desc: 'Tactile mechanical precision, engineered for peak performance.' },
+  { id: 'laptop', title: 'Pro Laptop X', videoSrc: '/videos/Laptop.mp4', desc: 'Desktop-tier power in a hyper-slim, thermally optimized chassis.' },
+  { id: 'mouse', title: 'Precision Mouse', videoSrc: '/videos/Mouse.mp4', desc: 'Sub-millisecond tracking with an ergonomic, aerodynamic design.' }
+];
+
+const explodedData = {
+  cascos: {
+    title: 'Acoustic Architecture',
+    desc: 'Dual-layer 50mm titanium drivers and active pressure equalization for studio-grade clarity.',
+    image: '/quantum_headset_exploded_diagram.png',
+    specs: [
+      { label: 'Driver', value: '50mm Titanium', top: '15%', left: '20%' },
+      { label: 'Coil', value: 'Copper-Clad Aluminum', bottom: '25%', right: '15%' }
+    ]
+  },
+  keyboard: {
+    title: 'Tactile Engineering',
+    desc: 'Hot-swappable mechanical switches, acoustic foam, and a reinforced steel mounting plate.',
+    image: '/keyboard_exploded_diagram.png',
+    specs: [
+      { label: 'Switches', value: 'Custom Linear', top: '20%', left: '10%' },
+      { label: 'Plate', value: 'Aircraft Grade Steel', bottom: '30%', right: '20%' }
+    ]
+  },
+  laptop: {
+    title: 'Thermal Management',
+    desc: 'Advanced vapor chamber cooling system with liquid metal thermal interface for peak sustained power.',
+    image: '/laptop_exploded_diagram.png',
+    specs: [
+      { label: 'Cooling', value: 'Vapor Chamber', top: '10%', right: '25%' },
+      { label: 'Chassis', value: 'Carbon Fiber Shell', bottom: '20%', left: '15%' }
+    ]
+  },
+  mouse: {
+    title: 'Tracking Precision',
+    desc: 'Next-gen optical sensor with zero smoothing, filtering, or acceleration for perfect 1:1 movement.',
+    image: '/quantum_headset_exploded_diagram.png', // Temporary placeholder
+    specs: [
+      { label: 'Sensor', value: '26K DPI Optical', top: '30%', left: '25%' },
+      { label: 'Weight', value: '52g Featherlight', bottom: '15%', right: '30%' }
+    ]
+  }
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Next Gen Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-black text-white overflow-hidden">
+    <SplashLoader client:load />
+    <Cursor client:load />
+    <FilmGrain client:load />
+    <SectionTransition client:load />
+    <Navbar client:load />
+    <Navigation client:load />
+
+    <!-- Scroll snapping container -->
+    <main class="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth" id="scroll-container">
+      <Hero client:load />
+
+      {products.map((p, i) => (
+        <>
+          <ProductSection 
+            client:visible 
+            id={p.id}
+            title={p.title} 
+            description={p.desc}
+            videoSrc={p.videoSrc}
+            index={i}
+          />
+          {p.id !== 'mouse' && (
+            <ExplodedView 
+              client:visible
+              id={p.id}
+              title={explodedData[p.id].title}
+              description={explodedData[p.id].desc}
+              imageSrc={explodedData[p.id].image}
+              specs={explodedData[p.id].specs}
+            />
+          )}
+        </>
+      ))}
+
+      <section id="grid" class="w-full min-h-screen snap-start bg-black flex items-center justify-center py-20 px-6">
+        <div class="max-w-6xl w-full">
+          <div class="mb-16 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-zinc-500 mb-4">Collection 2025</p>
+            <h2 class="text-5xl md:text-7xl font-bold tracking-tighter">Explore the Tech</h2>
+          </div>
+          <ProductGrid client:load products={products} />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

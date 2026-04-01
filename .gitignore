@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+dist/
+.astro/
+
+# IDEs
+.vscode/*
+!.vscode/settings.json
+.idea/
+.DS_Store
+
+# Environment variables
+.env
+.env.*
+
+# Build outputs
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Other
+.firebase/
+.firebaserc
+firebase.json
