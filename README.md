@@ -4,6 +4,8 @@
 
 ## ✨ Sobre el Proyecto
 
+¡Mira la web en vivo!: **[https://next-gen-tech-b38829a3.web.app](https://next-gen-tech-b38829a3.web.app)**
+
 Este sitio web es un **laboratorio de experimentación técnica** y un escaparate de diseño UI/UX de alta gama. El objetivo principal de este proyecto es explorar y perfeccionar técnicas avanzadas de **animación web**, interacciones magnéticas y experiencias de usuario inmersivas.
 
 No es solo una tienda o una landing page; es una prueba de concepto sobre cómo la tecnología y el diseño pueden converger para crear una sensación de "lujo digital".
@@ -68,7 +70,7 @@ Si quieres explorar el código o ejecutarlo localmente:
 
 **Brandon Mieres**
 - GitHub: [@BrandonMieres](https://github.com/BrandonMieres)
-- Email: [b.mieres@sapalomera.cat](mailto:b.mieres@sapalomera.cat)
+- Email: [b.mieresmt@gmail.com](mailto:b.mieresmt@gmail.com)
 
 ---
 
